@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+                <item
+                    android:checked="true"
+                    android:id="@+id/item_navigation_drawer_feria"
+                    android:icon="@drawable/en"
+                    android:title="@string/menu_feria" />
+               <item
+                   android:id="@+id/item_navigation_drawer_hoteles"
+                   android:icon="@drawable/ic_inbox_black_24dp"
+                   android:title="@string/menu_hoteles" />
+               <item
+                   android:id="@+id/item_navigation_drawer_restaurantes"
+                   android:icon="@drawable/ic_action_toggle_star"
+                   android:title="@string/menu_restaurantes" />
+               <item
+                   android:id="@+id/item_navigation_drawer_bares"
+                   android:icon="@drawable/ic_action_content_send"
+                   android:title="@string/menu_bares" />
+
+                <item
+                    android:id="@+id/item_navigation_drawer_para_visitar"
+                    android:icon="@drawable/ic_action_content_report"
+                    android:title="@string/menu_sitios_visitar" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/menu_servicios"
+            android:id="@+id/item_navigation_drawer_servicios">
+            <menu>
+                <item
+                    android:checked="true"
+                    android:id="@+id/item_navigation_drawer_taxi"
+                    android:icon="@drawable/ic_action_action_delete"
+                    android:title="@string/menu_taxi" />
+                <item
+                    android:checked="true"
+                    android:id="@+id/item_navigation_drawer_conductor"
+                    android:icon="@drawable/ic_action_action_help"
+                    android:title="@string/menu_conductor_elegido" />
+                <item
+                    android:checked="true"
+                    android:id="@+id/item_navigation_drawer_emergencias"
+                    android:icon="@drawable/ic_action_action_settings"
+                    android:title="@string/menu_emergencias" />
+            </menu>
+        </item>
+    </group>
+
+    <item
+        android:checked="true"
+        android:id="@+id/item_navigation_drawer_idiomaP"
+        android:title="@string/menu_opciones">
+        <menu>
+            <item
+                android:checked="true"
+                android:id="@+id/item_navigation_drawer_idioma"
+                android:icon="@drawable/en"
+                android:title="@string/menu_idioma" />
+            <item
+                android:checked="true"
+                android:id="@+id/item_navigation_drawer_acerca"
+                android:icon="@drawable/ic_action_content_drafts"
+                android:title="@string/menu_acerca" />
+
+        </menu>
+    </item>
+</menu>

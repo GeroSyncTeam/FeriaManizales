@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Feria from Manizales</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_calificar">Qualify</string>
+
+
+    <!-- Titulos munú drawerNavigatiom-->
+    <string name="menu_feria">The Fair</string>
+    <string name="menu_hoteles">Hotels</string>
+    <string name="menu_restaurantes">Restaurants</string>
+    <string name="menu_bares">Bars - Discotheques</string>
+    <string name="menu_sitios_visitar">Tourist Manizales</string>
+    <string name="menu_servicios">Services</string>
+    <string name="menu_taxi">Take a Taxi</string>
+    <string name="menu_conductor_elegido">Conductor chosen</string>
+    <string name="menu_emergencias">Emergency Numbers</string>
+    <string name="menu_opciones">Options</string>
+    <string name="menu_idioma">Language</string>
+    <string name="menu_acerca">About</string>
+
+    <!-- Titulos ActionBar -->
+    <string name="titulo_activity_inicio">Feria from Manizales</string>
+    <string name="titulo_activity_hoteles">Hotels for you</string>
+    <string name="titulo_actividad_detalle">Miss</string>
+
+    <!-- Titulos activities-->
+    <string name="title_activity_hoteles">Hotels</string>
+    <!-- Titulo header navigationDrawer -->
+    <string name="titulo_navigation_drawer">Sixty Fair from Manizales</string>
+    <string name="titulo_navigation_drawer_ordinal">60° Fair from Manizales</string>
+    <!-- Titulos tab layout feria-->
+    <string-array name="titulos_tab_feria">
+        <item>The Fair</item>
+        <item>Programming</item>
+        <item>Reign</item>
+        <item>Concert</item>
+    </string-array>
+    <!-- Titulos tab layout hoteles-->
+    <string-array name="titulos_tab_hoteles">
+        <item>City Hotels</item>
+        <item>Rural Hotels</item>
+    </string-array>
+    <!-- Titulos tab layout hoteles-->
+    <string-array name="titulos_tab_restaurantes">
+        <item>Restaurante 1</item>
+        <item>Restaurante 2</item>
+        <item>Restaurante 3</item>
+        <item>Restaurante 4</item>
+        <item>Restaurante 5</item>
+    </string-array>
+    <!-- Titulos tab layout Discotecas-->
+    <string-array name="titulos_tab_discotecas">
+        <item>Discotheque 1</item>
+        <item>Discotheque 2</item>
+    </string-array>
+    <!-- Días de Programación-->
+    <string name="lunes">Lunes</string>
+    <string name="martes">Martes</string>
+    <string name="miercoles">Miercoles</string>
+    <!-- Fechas de Programación-->
+    <string name="flunes">3 de Enero</string>
+    <string name="fmartes">4 de Enero</string>
+    <string name="fmiercoles">5 de Enero</string>
+
+
+    <!-- Prueba de los carros -->
+
+
+    <string name="nombre_transicion_imagen">imagen_compartida</string>
+    <string name="title_activity_reinas">Reinas</string>
+    <string name="texto_reinado">The following is the official program of events to be enjoyed on Monday January 5, 2015 at the 59th Manizales Fair. It is subject to change, so it is recommended its periodic consultation.</string>
+    <string name="titulo_candidatas">Candidates</string>
+
+    <!-- Titulos de la descripción candidata -->
+    <string name="edad">Age:</string>
+    <string name="medidas">Measures:</string>
+    <string name="estatura">Height:</string>
+    <string name="peso">Weight:</string>
+    <string name="profesion">Profession:</string>
+    <string name="procedencia">Born in:</string>
+    <string name="calificacion">Score:</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="slogan">The fair from Manizales is the best!!! y OLE.</string>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/paddingRVHRD">
+
+    <LinearLayout
+        android:id="@+id/layoutFotoHRD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fotoHRD"
+            android:layout_width="@dimen/fotoRVHRD"
+            android:layout_height="@dimen/fotoRVHRD"
+            android:src="@drawable/mamasita"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutDescripcionHRD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+        android:id="@+id/nombreHRD"
+        android:text="Hotel las Heliconias"
+        android:textSize="@dimen/nombreRVHRD"
+        android:padding="@dimen/paddingRVHRD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/descripcionHRD"
+            android:text="Habitaciones desde $ 20.000 en la mejor zona de la ciudad, cerca a... "
+            android:textSize="@dimen/descripcionRVHRD"
+            android:padding="@dimen/paddingRVHRD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

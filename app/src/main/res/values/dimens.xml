@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="size_fab">56dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="badge_text_size">10sp</dimen>
+
+    <dimen name="card_margin">16dp</dimen>
+
+    <dimen name="grid_item_text_size">11sp</dimen>
+    <dimen name="titulos">20sp</dimen>
+    <dimen name="grid_view_padding">10dp</dimen>
+    <dimen name="grid_item_image_size">90dp</dimen>
+    <dimen name="foto_candidata">140dp</dimen>
+    <dimen name="espacio_grilla">16dp</dimen>
+    <dimen name="nombre_candidata">30sp</dimen>
+    <dimen name="info_candidata">15sp</dimen>
+    <dimen name="padding15">15dp</dimen>
+
+    <!--Dimensiones fotos candidata Detalle -->
+    <dimen name="foto_margin">5dp</dimen>
+    <!-- Dimensiones fotos recyclerViewHRD -->
+    <dimen name="fotoRVHRD">100dp</dimen>
+    <!-- Dimensiones textos recyclerViewHRD -->
+    <dimen name="nombreRVHRD">20sp</dimen>
+    <dimen name="descripcionRVHRD">10sp</dimen>
+    <!-- padding recyclerViewHRD -->
+    <dimen name="paddingRVHRD">5dp</dimen>
+</resources>
