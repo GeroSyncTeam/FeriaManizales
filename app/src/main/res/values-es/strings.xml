@@ -41,6 +41,11 @@
         <item>Hoteles Rurales</item>
     </string-array>
     <!-- Titulos tab layout hoteles-->
+    <string-array name="titulos_tab_descHRD">
+        <item>Detalles</item>
+        <item>Mapa</item>
+    </string-array>
+    <!-- Titulos tab layout restaurantes-->
     <string-array name="titulos_tab_restaurantes">
         <item>Restaurante 1</item>
         <item>Restaurante 2</item>

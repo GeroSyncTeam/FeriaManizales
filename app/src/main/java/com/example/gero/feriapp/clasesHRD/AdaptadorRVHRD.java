@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.gero.feriapp.R;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class AdaptadorRVHRD extends RecyclerView.Adapter<ViewHolderHRD> {
     @Override
     public ViewHolderHRD onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.fila_hrd, parent, false);
-        ViewHolderHRD viewHRD = new ViewHolderHRD(view);
+        ViewHolderHRD viewHRD = new ViewHolderHRD(view, context);
         return viewHRD;
     }
 
@@ -36,6 +38,7 @@ public class AdaptadorRVHRD extends RecyclerView.Adapter<ViewHolderHRD> {
         holder.getFoto().setImageResource(getIntResourceByName(items.get(position).getIdDrawable()));
         holder.getNombre().setText(items.get(position).getNombre());
         holder.getDescripcion().setText(items.get(position).getPreViewDescripcion());
+        holder.setHrd(items.get(position));
     }
 
     /**
@@ -52,4 +55,6 @@ public class AdaptadorRVHRD extends RecyclerView.Adapter<ViewHolderHRD> {
     public int getItemCount() {
         return items.size();
     }
+
+
 }

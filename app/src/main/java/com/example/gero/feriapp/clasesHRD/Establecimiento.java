@@ -1,11 +1,15 @@
 package com.example.gero.feriapp.clasesHRD;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Gero on 30/08/2015.
  */
-public class Establecimiento {
+public class Establecimiento implements Serializable {
 
     private List<String> idFotos;
     private String nombre;
@@ -105,5 +109,9 @@ public class Establecimiento {
 
     public void setPreViewDescripcion(String preViewDescripcion) {
         this.preViewDescripcion = preViewDescripcion;
+    }
+
+    public int getId() {
+        return nombre.hashCode();
     }
 }

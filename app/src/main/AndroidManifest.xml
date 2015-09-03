@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gero.feriapp.Inicio" />
         </activity>
+        <activity
+            android:name=".clasesHRD.ActividadHRD"
+            android:label="@string/title_activity_reinas"
+            android:parentActivityName="com.example.gero.feriapp.Inicio">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gero.feriapp.Inicio" />
+        </activity>
 
         <!-- Plugin para twitter -->
         <meta-data

@@ -1,5 +1,8 @@
 package com.example.gero.feriapp.clasesHRD;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
@@ -14,4 +17,5 @@ public class Hotel extends Establecimiento {
     public Hotel(List<String> idFotos, String nombre, String idDrawable, String url, String direccion, List<String> telefonos, String descripción, String preViewDescripcion, boolean like) {
         super(idFotos, nombre, idDrawable, url, direccion, telefonos, descripción, preViewDescripcion, like);
     }
+
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="@bool/fitsSystemWindows"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_kitkat_height"
+            android:background="?colorPrimary" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_lollipop_height"
+            android:background="?colorPrimaryDark" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:elevation="4dp"
+            app:theme="@style/ToolbarTheme" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding15"
+        android:orientation="horizontal">
+        <GridView
+            android:id="@+id/gridFotosHRD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="100dp"
+            android:horizontalSpacing="2dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- SlidingTab-->
+        <com.example.gero.feriapp.SlidingTabLayout
+            android:id="@+id/tabsHRD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ViewPager -->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pagerHRD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

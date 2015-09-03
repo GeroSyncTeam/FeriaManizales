@@ -8,8 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.gero.feriapp.R;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ public class AdaptadorFragmentHRD extends Fragment {
 
     private RecyclerView recyclerView;
     private AdaptadorRVHRD adaptadorRVHRD;
+    private static List<Establecimiento> items = new ArrayList<>();
 
     public static AdaptadorFragmentHRD getInstance(int posicion) {
         AdaptadorFragmentHRD adaptador = new AdaptadorFragmentHRD();
@@ -33,25 +37,45 @@ public class AdaptadorFragmentHRD extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_hrd, container, false);
         //recyclerView ---------------------------------------
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerViewHRD);
-        adaptadorRVHRD = new AdaptadorRVHRD(getActivity(), getDatosProgramacion());
+        adaptadorRVHRD = new AdaptadorRVHRD(getActivity(), getDatosHRD());
         recyclerView.setAdapter(adaptadorRVHRD);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return layout;
     }
 
-    public static List<Establecimiento> getDatosProgramacion() {
-        List<Establecimiento> listaIP = new ArrayList<>();
+    public List<Establecimiento> getDatosHRD() {
+        items.clear();
         String[] idFondos = {"drawable/mamasita", "drawable/mamasita", "drawable/mamasita", "drawable/mamasita"};
         String[] dias = {"Lunes", "Martes", "Miercoles", "Jueves"};
         String[] fechas = {"Primero", "Segundo", "Tercero", "Cuarto"};
         for (int i = 0; i < idFondos.length; i++) {
-            Establecimiento aux = new Hotel();
+            Establecimiento aux = new Establecimiento();
             aux.setNombre(dias[i]);
             aux.setPreViewDescripcion(dias[i]);
             aux.setIdDrawable(idFondos[i]);
-            listaIP.add(aux);
+            List<String> idFotos = new ArrayList<String>();
+            idFotos.add("drawable/mamasita");
+            idFotos.add("drawable/mamasita2");
+            idFotos.add("drawable/mamasita");
+            idFotos.add("drawable/mamasita2");
+            aux.setIdFotos(idFotos);
+            aux.setUrl("www.cointproingenieria.com");
+            aux.setDireccion("Calle falsa 123");
+            aux.setTelefonos(idFotos);
+            aux.setDescripción("Descripcion de todo");
+            aux.setLike(true);
+            items.add(aux);
         }
-        return listaIP;
+        return items;
+    }
+
+    public  static Establecimiento getItem(int id) {
+        for (Establecimiento item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
     }
 
     @Override

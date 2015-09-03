@@ -2,12 +2,12 @@ package com.example.gero.feriapp;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
-import android.view.ViewGroup;
 
 import com.example.gero.feriapp.clasesHRD.AdaptadorFragmentHRD;
+import com.example.gero.feriapp.clasesHRD.AdaptadorFragmentListHRD;
+import com.example.gero.feriapp.clasesHRD.Establecimiento;
 
 /**
  * Created by Gero on 28/07/2015.
@@ -19,9 +19,9 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
     private String[] tabs;
     private String idioma;
     private int idTarea;
+    private int idHrd;
 
     /**
-     *
      * @param idTarea representa el tipo
      * @param fm
      * @param tabs
@@ -34,12 +34,19 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
         this.idioma = idioma;
     }
 
+    public MyAdapterManager(int idTarea, FragmentManager fm, String[] tabs, String idioma, int idHrd) {
+        super(fm);
+        this.idTarea = idTarea;
+        this.tabs = tabs;
+        this.idioma = idioma;
+        this.idHrd = idHrd;
+    }
+
     @Override
     public CharSequence getPageTitle(int position) {
 
         return tabs[position];
     }
-
 
 
     /**
@@ -52,7 +59,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
 
         Log.v("Solicito el item ", "onCreate() Restoring previous state");
         Fragment adaptador = null;
-        switch (idTarea){
+        switch (idTarea) {
             case 0:
                 switch (position) {
                     case 0:
@@ -80,17 +87,26 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
 
                 }
                 break;
+            case 10:
+                switch (position) {
+                    case 0:
+                        return adaptador = AdaptadorFragmentListHRD.getInstance(position, idHrd);
+                    case 1:
+                        return adaptador = AdaptadorFragmentListHRD.getInstance(position, idHrd);
+                    default:
+
+                }
+                break;
         }
 
         return null;
     }
 
 /**
-    @Override
-    public int getItemPosition(Object object) {
-        return POSITION_NONE;
-    }
-*/
+ @Override public int getItemPosition(Object object) {
+ return POSITION_NONE;
+ }
+ */
     /**
      * Return the number of views available.
      */
