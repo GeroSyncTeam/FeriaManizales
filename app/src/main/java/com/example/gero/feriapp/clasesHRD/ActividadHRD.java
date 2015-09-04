@@ -2,6 +2,8 @@ package com.example.gero.feriapp.clasesHRD;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -13,9 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
 import com.example.gero.feriapp.AdaptadorGridFotosDetalle;
 import com.example.gero.feriapp.CambiarIdioma;
 import com.example.gero.feriapp.MyAdapterManager;
+import com.example.gero.feriapp.PageAdapterVisorFotos;
 import com.example.gero.feriapp.R;
 import com.example.gero.feriapp.SlidingTabLayout;
 import com.example.gero.feriapp.fragmentDialogo;
@@ -42,6 +46,7 @@ public class ActividadHRD extends AppCompatActivity {
      * Paginas que muestran la información en el inicio.
      */
     private ViewPager mPager;
+    private ViewPager mPagerFotos;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,9 +97,10 @@ public class ActividadHRD extends AppCompatActivity {
         }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(hrd.getNombre());
+        toolbar.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+/*
         // aca se parámetriza el griView que contiene las fotos de la candidata
         adaptador = new AdaptadorGridFotosDetalle(ActividadHRD.this, idFotosHRD);
         gridView = (GridView) findViewById(R.id.gridFotosHRD);
@@ -108,12 +114,13 @@ public class ActividadHRD extends AppCompatActivity {
         gridView.setVerticalScrollBarEnabled(false);
         //cargarImagenExtendida();
         //las paginas
-
+*/
         titulosTabs = getResources().getStringArray(R.array.titulos_tab_descHRD);//ESTO ES TEMPORAL
-
+        mPagerFotos = (ViewPager) findViewById(R.id.pagerFotosHRD);
+        mPagerFotos.setAdapter(new PageAdapterVisorFotos(getSupportFragmentManager(), idFotosHRD));
         mPager = (ViewPager) findViewById(R.id.pagerHRD);
         int g;
-        mPager.setAdapter(new MyAdapterManager(10, getSupportFragmentManager(), titulosTabs, idioma,hrd.getId()));
+        mPager.setAdapter(new MyAdapterManager(10, getSupportFragmentManager(), titulosTabs, idioma, hrd.getId()));
         //mPager.setCurrentItem(miPosicion);
         //Los titulosTabs
 

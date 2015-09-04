@@ -138,4 +138,6 @@ public class fragmentDialogo extends DialogFragment {
         int resId = getResources().getIdentifier(aString, "string", packageName);
         return resId;
     }
+
+
 }
