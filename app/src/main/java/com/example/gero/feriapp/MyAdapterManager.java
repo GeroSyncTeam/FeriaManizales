@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
+import com.example.gero.feriapp.Twitter.TimelineActivity;
 import com.example.gero.feriapp.clasesHRD.AdaptadorFragmentHRD;
 import com.example.gero.feriapp.clasesHRD.AdaptadorFragmentListHRD;
 import com.example.gero.feriapp.clasesHRD.Establecimiento;
@@ -63,6 +64,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
             case 0:
                 switch (position) {
                     case 0:
+
                         return adaptador = AdaptadorFragmentFeria.getInstance(position);
                     case 1:
                         return adaptador = AdaptadorFragmentProgramacion.getInstance(position);

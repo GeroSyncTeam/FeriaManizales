@@ -25,10 +25,6 @@ import java.util.Locale;
 
 public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinado.OnFragmentListadoListener {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "4MWar5wQ4VFd4CcZY59Qy4vhi";
-    private static final String TWITTER_SECRET = "8skAekd3Nyiou7JuD3iF9CGS6vK8o31FxF61F7VwWM7eSc4KHm";
-
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gero.feriapp" >
+    <!-- Permission - Internet Connect -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network State Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -41,13 +46,6 @@
                 android:value="com.example.gero.feriapp.Inicio" />
         </activity>
 
-        <!-- Plugin para twitter -->
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="e1a89039a6bd59f9f4d19f3acf078bc35857de24" />
     </application>
 
-    <!-- Permisos Android para internet -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
