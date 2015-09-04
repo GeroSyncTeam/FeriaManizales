@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class AdaptadorFragmentListHRD extends Fragment {
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putInt("ID_HRD", hrd.getId());
+        //savedInstanceState.putInt("ID_HRD", hrd.getId());
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -69,8 +70,10 @@ public class AdaptadorFragmentListHRD extends Fragment {
     }
 
     public void cargarDatos() {
-        int idHrd = getActivity().getBaseContext().getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE).getInt("IDHRD", -2);
-        hrd = (Establecimiento) AdaptadorFragmentHRD.getItem(idHrd); //Aca es donde debo recibir el establecimiento
+        //int idHrd = getActivity().getBaseContext().getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE).getInt("IDHRD", -2);
+        //hrd = (Establecimiento) AdaptadorFragmentHRD.getItem(idHrd); //Aca es donde debo recibir el establecimiento
+        hrd  = (Establecimiento) getActivity().getIntent().getSerializableExtra("PARAMETROESTABLECIMIENTO");
+        Log.v("test", "ID ESTABLECIMIENTO "+hrd.getId());
         if (hrd != null) {
             tituloWebHRD.setText(hrd.getUrl());
             tituloTelHRD.setText(hrd.getTelefonos().get(0));

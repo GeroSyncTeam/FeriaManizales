@@ -20,6 +20,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import java.util.Locale;
 
 
@@ -49,6 +50,8 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("mMyCurrentPosition", mPager.getCurrentItem());
+        savedInstanceState.putInt("ID_TAREA", idTarea);
+        Log.v("testI", "onSaveInstanceState");
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -59,6 +62,8 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         miPosicion = savedInstanceState.getInt("mMyCurrentPosition");
+        idTarea = savedInstanceState.getInt("ID_TAREA");
+        Log.v("testI", "onRestoreInstanceState");
         // where mMyCurrentPosition should be a public value in your activity.
     }
 
@@ -68,6 +73,12 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("testI", "onCreate");
+        if (savedInstanceState != null) {
+            Log.v("testI", "toma el valor guardado = "+idTarea);
+            idTarea = savedInstanceState.getInt("ID_TAREA");
+            Log.v("testI", "toma el valor guardado = "+idTarea);
+        }
         //acá cambia el idioma *********************************************************************
         SharedPreferences cambioIdioma = getSharedPreferences("cambioIdioma", Activity.MODE_PRIVATE);
         String sharedIdioma = cambioIdioma.getString("Lenguaje", "");
@@ -144,7 +155,7 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
      */
     public void cambiarActivity(String[] titulosTabs) {
         if (titulosTabs == null) {
-            titulosTabs = getResources().getStringArray(R.array.titulos_tab_feria);
+            titulosTabs = getTitulosTab();
         }
         //las paginas
 
@@ -159,7 +170,6 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
         //mTabs.setDistributeEvenly(true);
         mTabs.setViewPager(mPager);
     }
-
 
 
     @Override
@@ -182,6 +192,27 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public String[] getTitulosTab() {
+        String[] titulosTabs;
+        switch (idTarea) {
+            case 0:
+                titulosTabs = getResources().getStringArray(R.array.titulos_tab_feria);
+                break;
+            case 1:
+                titulosTabs = getResources().getStringArray(R.array.titulos_tab_hoteles);
+                break;
+            case 2:
+                titulosTabs = getResources().getStringArray(R.array.titulos_tab_restaurantes);
+                break;
+            case 3:
+                titulosTabs = getResources().getStringArray(R.array.titulos_tab_discotecas);
+                break;
+            default:
+                titulosTabs = getResources().getStringArray(R.array.titulos_tab_feria);
+        }
+        return titulosTabs;
     }
 
     /**
@@ -268,5 +299,41 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.v("test", "Start");
+    }
 
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Log.v("test", "Restart");
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.v("test", "Resume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.v("test", "Pause");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.v("test", "Stop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.v("test", "Destroy");
+    }
 }

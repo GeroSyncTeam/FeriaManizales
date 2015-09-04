@@ -45,7 +45,7 @@ public class ViewHolderHRD extends RecyclerView.ViewHolder implements View.OnCli
     public void onClick(View v) {
         Intent intent = new Intent(context, ActividadHRD.class);
         intent.putExtra("PARAMETROESTABLECIMIENTO", getHrd());
-        saveIdHRD(context.getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE), getHrd().getId());
+        //saveIdHRD(context.getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE), getHrd().getId());
 
         //intent.putExtra("HASH_CODE",getHrd().getId());
         /**

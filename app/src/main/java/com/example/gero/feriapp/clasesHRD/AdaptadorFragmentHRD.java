@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,10 +72,12 @@ public class AdaptadorFragmentHRD extends Fragment {
 
     public  static Establecimiento getItem(int id) {
         for (Establecimiento item : items) {
+            Log.v("COMPROVANDO", ""+item.getId());
             if (item.getId() == id) {
                 return item;
             }
         }
+        Log.v("RETORNO NULL", "RETORNO UN ESTABLECIMIENTO NULO");
         return null;
     }
 

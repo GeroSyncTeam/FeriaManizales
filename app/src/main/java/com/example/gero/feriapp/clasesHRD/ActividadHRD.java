@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -94,6 +95,7 @@ public class ActividadHRD extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("test", "OnCreate");
         //ac� cambia el idioma *********************************************************************
         SharedPreferences cambioIdioma = getSharedPreferences("cambioIdioma", Activity.MODE_PRIVATE);
         String sharedIdioma = cambioIdioma.getString("Lenguaje", "");
@@ -111,6 +113,7 @@ public class ActividadHRD extends AppCompatActivity {
         if (hrd == null) {
             // Obtener la Candidata con el identificador establecido en la actividad principal
             hrd = (Establecimiento) getIntent().getSerializableExtra("PARAMETROESTABLECIMIENTO");
+            Log.v("test", "establecimiento nombre = "+hrd.getNombre());
             //candidata = Candidata.getItem(getIntent().getIntExtra("CANDIDATA", 1));
             cargarFotosHRD();
         }
@@ -194,4 +197,41 @@ public class ActividadHRD extends AppCompatActivity {
         return resId;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.v("test", "Start");
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Log.v("test", "Restart");
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.v("test", "Resume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.v("test", "Pause");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.v("test", "Stop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.v("test", "Destroy");
+    }
 }
