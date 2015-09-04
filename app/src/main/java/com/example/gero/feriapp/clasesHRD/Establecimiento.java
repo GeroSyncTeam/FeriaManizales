@@ -17,7 +17,7 @@ public class Establecimiento implements Serializable {
     private String url;
     private String direccion;
     private List<String> telefonos;
-    private String descripción;
+    private String descripcion;
     private String preViewDescripcion;
     private boolean like;
 
@@ -26,7 +26,7 @@ public class Establecimiento implements Serializable {
     }
 
     public Establecimiento(List<String> idFotos, String nombre, String idDrawable, String url, String direccion, List<String> telefonos
-            , String descripción, String preViewDescripcion,boolean like) {
+            , String descripcion, String preViewDescripcion,boolean like) {
 
         this.setIdFotos(idFotos);
         this.setNombre(nombre);
@@ -34,7 +34,7 @@ public class Establecimiento implements Serializable {
         this.setUrl(url);
         this.setDireccion(direccion);
         this.setTelefonos(telefonos);
-        this.setDescripción(descripción);
+        this.setDescripcion(descripcion);
         this.setPreViewDescripcion(preViewDescripcion);
         this.setLike(like);
     }
@@ -87,12 +87,12 @@ public class Establecimiento implements Serializable {
         this.telefonos = telefonos;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public boolean isLike() {

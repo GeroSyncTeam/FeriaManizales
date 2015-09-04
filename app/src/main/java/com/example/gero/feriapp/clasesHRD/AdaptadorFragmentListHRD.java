@@ -1,5 +1,6 @@
 package com.example.gero.feriapp.clasesHRD;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,6 +39,17 @@ public class AdaptadorFragmentListHRD extends Fragment {
         return adaptador;
     }
 
+    /**
+     * Guarda la posición del slidingTab para cargarla en una nueva ejecución
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("ID_HRD", hrd.getId());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_list_hrd, container, false);
@@ -51,15 +63,20 @@ public class AdaptadorFragmentListHRD extends Fragment {
         iconoTelHRD = (ImageView) layout.findViewById(R.id.iconoTelHRD);
         iconoDirHRD = (ImageView) layout.findViewById(R.id.iconoDirHRD);
         cargarDatos();
+
+
         return layout;
     }
 
     public void cargarDatos() {
-        hrd = (Establecimiento) AdaptadorFragmentHRD.getItem(getArguments().getInt("ESTABLECIMIENTO")); //Aca es donde debo recibir el establecimiento
-        tituloWebHRD.setText(hrd.getUrl());
-        tituloTelHRD.setText(hrd.getTelefonos().get(0));
-        tituloDirHRD.setText(hrd.getDireccion());
-        detallesHRD.setText(hrd.getDescripci�n());
+        int idHrd = getActivity().getBaseContext().getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE).getInt("IDHRD", -2);
+        hrd = (Establecimiento) AdaptadorFragmentHRD.getItem(idHrd); //Aca es donde debo recibir el establecimiento
+        if (hrd != null) {
+            tituloWebHRD.setText(hrd.getUrl());
+            tituloTelHRD.setText(hrd.getTelefonos().get(0));
+            tituloDirHRD.setText(hrd.getDireccion());
+            detallesHRD.setText(hrd.getDescripcion());
+        }
 /*
         tituloDetallesHRD .setText("Detalles");
         iconoWebHRD = (ImageView) layout.findViewById(R.id.iconoWebHRD);

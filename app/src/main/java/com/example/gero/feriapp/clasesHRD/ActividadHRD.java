@@ -2,8 +2,6 @@ package com.example.gero.feriapp.clasesHRD;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -12,8 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.gero.feriapp.AdaptadorGridFotosDetalle;
@@ -32,6 +28,7 @@ import java.util.Locale;
 public class ActividadHRD extends AppCompatActivity {
 
     private Establecimiento hrd;
+    private int idHrd;
     private int[] idFotosHRD;
     private GridView gridView;
     private AdaptadorGridFotosDetalle adaptador;
@@ -43,10 +40,32 @@ public class ActividadHRD extends AppCompatActivity {
      */
     private SlidingTabLayout mTabs;
     /**
-     * Paginas que muestran la información en el inicio.
+     * Paginas que muestran la informaciï¿½n en el inicio.
      */
     private ViewPager mPager;
     private ViewPager mPagerFotos;
+
+    /**
+     * Guarda la posiciÃ³n del slidingTab para cargarla en una nueva ejecuciÃ³n
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("ID_HRD", hrd.getId());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * @param savedInstanceState
+     */
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        /*idHrd = savedInstanceState.getInt("ID_HRD");
+        hrd = (Establecimiento) AdaptadorFragmentHRD.getItem(idHrd);
+        // where mMyCurrentPosition should be a public value in your activity.*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,9 +76,9 @@ public class ActividadHRD extends AppCompatActivity {
     }
 
     /**
-     * Se sobre escribe el funcionamiento del botón atras del action Bar
+     * Se sobre escribe el funcionamiento del botï¿½n atras del action Bar
      *
-     * @param item El botón del actionBar
+     * @param item El botï¿½n del actionBar
      * @return
      */
     @Override
@@ -75,7 +94,7 @@ public class ActividadHRD extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //acá cambia el idioma *********************************************************************
+        //acï¿½ cambia el idioma *********************************************************************
         SharedPreferences cambioIdioma = getSharedPreferences("cambioIdioma", Activity.MODE_PRIVATE);
         String sharedIdioma = cambioIdioma.getString("Lenguaje", "");
         String idiomaSO = Locale.getDefault().getLanguage();
@@ -97,11 +116,11 @@ public class ActividadHRD extends AppCompatActivity {
         }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(hrd.getNombre());
-        toolbar.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        toolbar.setBackgroundResource(R.drawable.background_tool);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 /*
-        // aca se parámetriza el griView que contiene las fotos de la candidata
+        // aca se parï¿½metriza el griView que contiene las fotos de la candidata
         adaptador = new AdaptadorGridFotosDetalle(ActividadHRD.this, idFotosHRD);
         gridView = (GridView) findViewById(R.id.gridFotosHRD);
         gridView.setAdapter(adaptador);
@@ -119,7 +138,6 @@ public class ActividadHRD extends AppCompatActivity {
         mPagerFotos = (ViewPager) findViewById(R.id.pagerFotosHRD);
         mPagerFotos.setAdapter(new PageAdapterVisorFotos(getSupportFragmentManager(), idFotosHRD));
         mPager = (ViewPager) findViewById(R.id.pagerHRD);
-        int g;
         mPager.setAdapter(new MyAdapterManager(10, getSupportFragmentManager(), titulosTabs, idioma, hrd.getId()));
         //mPager.setCurrentItem(miPosicion);
         //Los titulosTabs
@@ -140,7 +158,7 @@ public class ActividadHRD extends AppCompatActivity {
      * @param posicion
      */
     public void openDialog(int posicion) {
-        //código del dialog que muestra las fotos
+        //cï¿½digo del dialog que muestra las fotos
         fragmentDialogo overlay = fragmentDialogo.getInstance(idFotosHRD);
         overlay.setPosicionViewPager(posicion);
         FragmentManager fm = getSupportFragmentManager();
@@ -149,8 +167,8 @@ public class ActividadHRD extends AppCompatActivity {
     }
 
     /**
-     * @param idioma es la sigla del idioma por el cual se va a cambiar ej en para inglés
-     *               es para español
+     * @param idioma es la sigla del idioma por el cual se va a cambiar ej en para inglï¿½s
+     *               es para espaï¿½ol
      */
     public void cambiarIdioma(String idioma) {
         CambiarIdioma cambiarIdioma = new CambiarIdioma(getBaseContext(), idioma);

@@ -25,8 +25,9 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/frameToolBar"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="300dp">
         <android.support.v4.view.ViewPager
             android:id="@+id/pagerFotosHRD"
             android:layout_width="match_parent"
@@ -64,9 +65,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1" />
-
-
     </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>

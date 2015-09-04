@@ -1,7 +1,9 @@
 package com.example.gero.feriapp.clasesHRD;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,10 +34,19 @@ public class ViewHolderHRD extends RecyclerView.ViewHolder implements View.OnCli
         itemView.setOnClickListener(this);
     }
 
+    public void saveIdHRD(SharedPreferences prefs, int idHRD) {
+        String etiquetaHRD = "IDHRD";
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(etiquetaHRD, idHRD);
+        editor.commit();
+    }
+
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, ActividadHRD.class);
         intent.putExtra("PARAMETROESTABLECIMIENTO", getHrd());
+        saveIdHRD(context.getSharedPreferences("GUARDAR_ID_HRD", Activity.MODE_PRIVATE), getHrd().getId());
+
         //intent.putExtra("HASH_CODE",getHrd().getId());
         /**
          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
