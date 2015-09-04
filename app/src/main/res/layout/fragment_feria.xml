@@ -24,12 +24,5 @@
             android:text="Hola"/>
     </android.support.v7.widget.CardView>
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.example.gero.feriapp.Twitter.TimelineFragment"
-        android:id="@+id/fragment"
-        android:layout_gravity="center_horizontal" />
-
 
 </LinearLayout>
