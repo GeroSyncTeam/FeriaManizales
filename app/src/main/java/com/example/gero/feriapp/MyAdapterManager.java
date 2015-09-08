@@ -62,7 +62,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
         Fragment adaptador = null;
         switch (idTarea) {
             case 0:
-                switch (position) {
+                switch (position) {// Feria
                     case 0:
 
                         return adaptador = AdaptadorFragmentFeria.getInstance(position);
@@ -80,7 +80,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
                 break;
 
             case 1:
-                switch (position) {
+                switch (position) {//Hoteles
                     case 0:
                         return adaptador = AdaptadorFragmentHRD.getInstance(position);
                     case 1:
@@ -90,7 +90,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
                 }
                 break;
             case 10:
-                switch (position) {
+                switch (position) {// ActividadHRD
                     case 0:
                         return adaptador = AdaptadorFragmentListHRD.getInstance(position, idHrd);
                     case 1:

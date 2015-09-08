@@ -23,11 +23,11 @@ public class AdaptadorFragmentListHRD extends Fragment {
     private TextView tituloDirHRD;
     private TextView tituloDetallesHRD;
     private TextView detallesHRD;
-
+/*
     private ImageView iconoWebHRD;
     private ImageView iconoTelHRD;
     private ImageView iconoDirHRD;
-
+*/
     private Establecimiento hrd;
 
     public static AdaptadorFragmentListHRD getInstance(int posicion, int idHrd) {
@@ -57,12 +57,13 @@ public class AdaptadorFragmentListHRD extends Fragment {
         tituloWebHRD = (TextView) layout.findViewById(R.id.tituloWebHRD);
         tituloTelHRD = (TextView) layout.findViewById(R.id.tituloTelHRD);
         tituloDirHRD = (TextView) layout.findViewById(R.id.tituloDirHRD);
-        tituloDetallesHRD = (TextView) layout.findViewById(R.id.tituloDetallesHRD);
         detallesHRD = (TextView) layout.findViewById(R.id.detallesHRD);
-
+/*
+        tituloDetallesHRD = (TextView) layout.findViewById(R.id.tituloDetallesHRD);
         iconoWebHRD = (ImageView) layout.findViewById(R.id.iconoWebHRD);
         iconoTelHRD = (ImageView) layout.findViewById(R.id.iconoTelHRD);
         iconoDirHRD = (ImageView) layout.findViewById(R.id.iconoDirHRD);
+  */
         cargarDatos();
 
 

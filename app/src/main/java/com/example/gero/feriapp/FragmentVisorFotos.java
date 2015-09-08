@@ -2,6 +2,8 @@ package com.example.gero.feriapp;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +15,7 @@ import android.widget.ImageView;
 
 public class FragmentVisorFotos extends Fragment {
 
-   // private ImageView fotoVisorFotos;
+   private ImageView fotoVisorFotos;
 
     public static FragmentVisorFotos getInstance(int idFoto){
 
@@ -33,9 +35,10 @@ public class FragmentVisorFotos extends Fragment {
      */
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_visor_fotos, container, false);
-        view.setBackgroundResource((Integer) getArguments().get("ID_FOTO"));
-        //fotoVisorFotos = (ImageView) view.findViewById(R.id.fotoEnElVisor);
-        //fotoVisorFotos.setImageResource((Integer) getArguments().get("ID_FOTO"));
+        //view.setBackgroundResource((Integer) getArguments().get("ID_FOTO"));
+        //view.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        fotoVisorFotos = (ImageView) view.findViewById(R.id.imagenVisorFotos);
+        fotoVisorFotos.setImageResource((Integer) getArguments().get("ID_FOTO"));
 
         return view;
     }

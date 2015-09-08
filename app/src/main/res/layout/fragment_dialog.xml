@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.view.ViewPager
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Señorita Algo"
-            android:padding="@dimen/titulos"
-            android:textSize="30sp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Señorita Algo"
-            android:padding="@dimen/titulos"
-            android:textSize="30sp"
-            android:gravity="center"/>
-    </LinearLayout>
-    -->
-    <!-- ViewPager -->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pagerVisorFotos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+    android:id="@+id/pagerVisorFotos"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />

@@ -134,6 +134,9 @@ public class Inicio extends AppCompatActivity implements AdaptadorFragmentReinad
         }
 
         setupNavigationDrawerContent(navigationView);
+        if(savedInstanceState!=null){
+            navigationView.getMenu().getItem(idTarea).setChecked(true);
+        }
 
         cambiarActivity(null);
 

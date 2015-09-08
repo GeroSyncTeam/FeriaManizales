@@ -44,12 +44,13 @@ public class fragmentDialogo extends DialogFragment {
             return;
         }
         //obtengo las dimenciones de la pantalla
+        /*
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
         int width = displaymetrics.widthPixels;
         getDialog().getWindow().setLayout((int) (width-(width*0.2)), (int) (height-(height*0.3)));
-
+*/
 
     }
 
@@ -82,7 +83,7 @@ public class fragmentDialogo extends DialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         //Configuracion Dialog
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        //dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         return dialog;
     }
