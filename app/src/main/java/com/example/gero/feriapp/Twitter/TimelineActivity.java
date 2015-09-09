@@ -1,9 +1,12 @@
 package com.example.gero.feriapp.Twitter;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 
@@ -19,38 +22,63 @@ import twitter4j.TwitterMethod;
 /**
  * Created by autentia on 16/12/13.
  */
-public class TimelineActivity extends FragmentActivity implements TimelineFragment.OnListItemClickedCallbackHandler {
+//CAMBIÉ FragmentActivity por Fragment
+public class TimelineActivity extends Fragment implements TimelineFragment.OnListItemClickedCallbackHandler {
 
     public static final String SELECTED_STATUS = "SelectedStatus";
     public static final String STATUSES = "Statuses";
     String[] tweets;
     ResponseList<Status> statuses;
+    View layout;
     static int position;
+//AGREGUE ESTE MÉTODO
+    public static TimelineActivity getInstance(int posicion) {
+        TimelineActivity adaptador = new TimelineActivity();
+        Bundle args = new Bundle();
+        args.putInt("posicion", posicion);
+        adaptador.setArguments(args);
 
-    public static TimelineActivity getInstance(int pos){
-        position = pos;
-        return new TimelineActivity();
+        return adaptador;
     }
+    //AGREGUE ESTE MÉTODO
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeline);
+        layout = inflater.inflate(R.layout.activity_timeline, container, false);
 
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        Fragment fragment = this.getActivity().getSupportFragmentManager().findFragmentById(R.id.container);
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             statuses = (ResponseList<Status>) savedInstanceState.get(STATUSES);
         }
 
         if (fragment == null) {
             TweetRepository.getInstance().getTimelineAsync(timelineListener); // => timelineListener
         } else {
-            View progressBar = findViewById(R.id.progressBar);
+            View progressBar = layout.findViewById(R.id.progressBar);
             progressBar.setVisibility(View.GONE);
         }
+        return layout;
     }
-
+// ELIMINÉ ESTE MÉTODO
+    /**
+     * @Override protected void onCreate(Bundle savedInstanceState) {
+     * super.onCreate(savedInstanceState);
+     * setContentView(R.layout.activity_timeline);
+     * <p/>
+     * Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+     * <p/>
+     * if (savedInstanceState != null) {
+     * statuses = (ResponseList<Status>) savedInstanceState.get(STATUSES);
+     * }
+     * <p/>
+     * if (fragment == null) {
+     * TweetRepository.getInstance().getTimelineAsync(timelineListener); // => timelineListener
+     * } else {
+     * View progressBar = findViewById(R.id.progressBar);
+     * progressBar.setVisibility(View.GONE);
+     * }
+     * }
+     */
     TwitterListener timelineListener = new TwitterAdapter() {
 
         @Override
@@ -65,10 +93,11 @@ public class TimelineActivity extends FragmentActivity implements TimelineFragme
     };
 
     private void showError() {
-        this.runOnUiThread(new Runnable() {
+        this.getActivity().runOnUiThread(new Runnable() { //AGREGUÉ this.getActivity()
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), "No se ha podido obtener el Timeline", Toast.LENGTH_LONG).show();
+                //AGREGUÉ this.getActivity()
+                Toast.makeText(getActivity().getApplicationContext(), "No se ha podido obtener el Timeline", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -91,17 +120,19 @@ public class TimelineActivity extends FragmentActivity implements TimelineFragme
 
         // Debido a que el callback se esta ejecutando en otro Thread distinto al Thread de UI, necesitamos mandar un mensaje
         // Al Thread de UI para poder actualizar la vista, para ello usamos el metodo runOnUiThread de la clase Activity
-        this.runOnUiThread(new Runnable() {
+
+        //AGREGUÉ this.getActivity()
+        this.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                View progressBar = findViewById(R.id.progressBar);
+                View progressBar = layout.findViewById(R.id.progressBar);//AGREGUÉ layout
                 progressBar.setVisibility(View.GONE);
                 // Creamos el TimelineFragment
                 Fragment fragment = new TimelineFragment();
                 // Añadimos el bundle con los tweets que hemos creado anteriormente
                 fragment.setArguments(bundle);
                 // Y lo insertamos en la vista contenedor
-                getSupportFragmentManager()
+                getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.container, fragment)
                         .commit();
@@ -110,7 +141,7 @@ public class TimelineActivity extends FragmentActivity implements TimelineFragme
     }
 
     @Override
-         public void OnListItemClicked(int position) {
+    public void OnListItemClicked(int position) {
         // Obtenemos el Status del array de Status(Tweet) que tenemos en memoria
         Status status = statuses.get(position);
 
@@ -123,7 +154,7 @@ public class TimelineActivity extends FragmentActivity implements TimelineFragme
         fragment.setArguments(bundle);
 
         // Y lo añadimos al contenedor
-        getSupportFragmentManager()
+        getActivity().getSupportFragmentManager() //AGREGUÉ this.getActivity()
                 .beginTransaction()
                 .replace(R.id.container, fragment) // Usamos replace porqué ya tenemos un fragment en el contenedor
                 .addToBackStack("Status") // Haciendo esto permitimos que el usuario pueda volver al fragment anterior pulsando Back
@@ -131,7 +162,7 @@ public class TimelineActivity extends FragmentActivity implements TimelineFragme
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {  //CAMBIÉ protected por public
         super.onSaveInstanceState(outState);
         outState.putSerializable(STATUSES, statuses);
     }

@@ -65,7 +65,7 @@ public class MyAdapterManager extends FragmentStatePagerAdapter {
                 switch (position) {// Feria
                     case 0:
 
-                        return adaptador = AdaptadorFragmentFeria.getInstance(position);
+                        return adaptador = TimelineActivity.getInstance(position);
                     case 1:
                         return adaptador = AdaptadorFragmentProgramacion.getInstance(position);
                     case 2:

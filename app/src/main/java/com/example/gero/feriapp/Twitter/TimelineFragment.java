@@ -45,6 +45,7 @@ public class TimelineFragment extends ListFragment {
         return view;
     }
 
+/** EN ESTA CLASE SOLO DOCUMENTE ESTE MÉTODO DE RESTO ESTA COMO LA ORIGINAL
     // A este método lo invoca Android en el momento en el que inserta el Fragment en la actividad
     @Override
     public void onAttach(Activity activity) {
@@ -57,7 +58,7 @@ public class TimelineFragment extends ListFragment {
             throw new ClassCastException(activity.toString() + " must implement OnArticleSelectedListener");
         }
     }
-
+*/
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
