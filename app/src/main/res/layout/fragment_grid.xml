@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/contenedorGrid"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="4dp">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/padding15">
+
 
             <TextView
                 android:id="@+id/descripcion_reinado"
@@ -27,14 +26,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:gravity="center_vertical"
-                android:text="@string/texto_reinado" />
-        </LinearLayout>
+                android:text="@string/texto_reinado"
+                />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/padding15">
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,23 +36,23 @@
                 android:gravity="left"
                 android:text="@string/titulo_candidatas"
                 android:textColor="@color/accent"
-                android:textSize="@dimen/titulos" />
-        </LinearLayout>
+                android:textSize="@dimen/titulos"
+                android:layout_marginTop="@dimen/padding15"
+                android:layout_marginBottom="@dimen/padding15"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding15">
 
-            <GridView
+            <com.example.gero.feriapp.GridPersonal
                 android:id="@+id/grid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:columnWidth="100dp"
                 android:horizontalSpacing="@dimen/espacio_grilla"
                 android:numColumns="auto_fit"
-                android:verticalSpacing="@dimen/espacio_grilla" />
-        </LinearLayout>
+                android:verticalSpacing="@dimen/espacio_grilla"
+                android:drawSelectorOnTop="false"
+                android:choiceMode="singleChoice" />
 
-    </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.v7.widget.CardView>

@@ -44,7 +44,7 @@ public class ActividadDetalle extends AppCompatActivity {
     private TextView calificacion_candidata;
     private Toolbar toolbar;
 
-    private GridView gridView;
+    private GridPersonal gridView;
     private AdaptadorGridFotosDetalle adaptador;
 
     private String titulo;
@@ -118,8 +118,9 @@ public class ActividadDetalle extends AppCompatActivity {
 
         // aca se parámetriza el griView que contiene las fotos de la candidata
         adaptador = new AdaptadorGridFotosDetalle(ActividadDetalle.this, idFotosCandidata);
-        gridView = (GridView) findViewById(R.id.gridFotos);
+        gridView = (GridPersonal) findViewById(R.id.gridFotos);
         gridView.setAdapter(adaptador);
+        gridView.setExpanded(true);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {

@@ -16,7 +16,7 @@ import android.widget.GridView;
  */
 public class AdaptadorFragmentReinado extends android.support.v4.app.Fragment {
 
-    private GridView gridView;
+    private GridPersonal gridView;
     private AdaptadorDeCandidatas adaptador;
     private OnFragmentListadoListener mListener;
     private String idioma;
@@ -41,9 +41,10 @@ public class AdaptadorFragmentReinado extends android.support.v4.app.Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        gridView = (GridView) getView().findViewById(R.id.grid);//grid
+        gridView = (GridPersonal) getView().findViewById(R.id.grid);//grid
         adaptador = new AdaptadorDeCandidatas(this.getActivity(), getStringResourceByName("titulo_actividad_detalle"),getArguments().getString("idioma"));//aca debe estar la lista de candidatas
         gridView.setAdapter(adaptador);
+        gridView.setExpanded(true);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {

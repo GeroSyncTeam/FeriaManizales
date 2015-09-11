@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,9 +35,13 @@
             android:background="@color/primary"
             android:elevation="4dp"
             app:theme="@style/ToolbarTheme" />
+
+
     </LinearLayout>
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -80,9 +83,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/padding15"
-                    android:layout_marginRight="@dimen/padding15">
+                    android:layout_marginRight="@dimen/padding15"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/edad_candidata"
@@ -143,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding15">
 
-                <GridView
+                <com.example.gero.feriapp.GridPersonal
                     android:id="@+id/gridFotos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -155,5 +158,5 @@
             </LinearLayout>
         </LinearLayout>
 
-
+    </ScrollView>
 </LinearLayout>
