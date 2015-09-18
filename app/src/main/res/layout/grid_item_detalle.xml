@@ -9,7 +9,6 @@
         android:id="@+id/fotoCandidataDetalle"
         android:src="@drawable/mamasita"
         android:layout_width="@dimen/grid_item_image_size"
-        android:layout_height="@dimen/grid_item_image_size"
-        android:scaleType="fitCenter" />
+        android:layout_height="@dimen/grid_item_image_size" />
 
 </LinearLayout>

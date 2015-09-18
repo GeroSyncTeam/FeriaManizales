@@ -33,7 +33,7 @@ public class fragmentDialogo extends DialogFragment {
     private ViewPager viewPager;
     private int posicionViewPager;
     private Point dimenciones[];
-
+    private int[] idFotos;
 
     @Override
     public void onStart() {
@@ -63,11 +63,12 @@ public class fragmentDialogo extends DialogFragment {
     public static fragmentDialogo getInstance(int[] idFotos) {
         fragmentDialogo adaptador = new fragmentDialogo();
         Bundle args = new Bundle();
-        args.putStringArray("ID_FOTOS", toStringID(idFotos));
+        //args.putStringArray("ID_FOTOS", toStringID(idFotos));
         adaptador.setArguments(args);
-
+        adaptador.setIdFotos(idFotos);
         return adaptador;
     }
+
 
     public static String[] toStringID(int[] idFotos) {
         String[] idFotosS = new String[idFotos.length];
@@ -93,9 +94,9 @@ public class fragmentDialogo extends DialogFragment {
         savedInstanceState = null;
         View view = inflater.inflate(R.layout.fragment_dialog, container);   //INFLAMOS CON LA VIEW
         FragmentManager fm = getChildFragmentManager();
-        String idFotos[] = getArguments().getStringArray("ID_FOTOS");
-        configurarDimensiones(idFotos);
-        PagAdapter = new PageAdapterVisorFotos(fm, idFotos);  //CREAMOS ADAPTER
+        //String idFotos[] = getArguments().getStringArray("ID_FOTOS");
+        //configurarDimensiones(idFotos);
+        PagAdapter = new PageAdapterVisorFotos(fm, idFotos,false);  //CREAMOS ADAPTER
         viewPager = (ViewPager) view.findViewById(R.id.pagerVisorFotos);          //INICIAMOS PAGER
         viewPager.setAdapter(PagAdapter);
         viewPager.setCurrentItem(getPosicionViewPager());
@@ -141,4 +142,11 @@ public class fragmentDialogo extends DialogFragment {
     }
 
 
+    public int[] getIdFotos() {
+        return idFotos;
+    }
+
+    public void setIdFotos(int[] idFotos) {
+        this.idFotos = idFotos;
+    }
 }

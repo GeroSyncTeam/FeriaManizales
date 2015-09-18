@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class PageAdapterVisorFotos extends FragmentPagerAdapter {
 
-    private String[] idFotos;
-
+    private int[] idFotos;
+    private boolean tipo;
 
     public static String[] toStringID(int[] idFotos) {
         String[] idFotosS = new String[idFotos.length];
@@ -22,19 +22,21 @@ public class PageAdapterVisorFotos extends FragmentPagerAdapter {
         return idFotosS;
     }
 
-    public PageAdapterVisorFotos(FragmentManager fm, int[] idFotos) {
-        super(fm);
-        this.idFotos = toStringID(idFotos);
-    }
-
-    public PageAdapterVisorFotos(FragmentManager fm, String[] idFotos) {
+    public PageAdapterVisorFotos(FragmentManager fm, int[] idFotos, boolean tipo) {
         super(fm);
         this.idFotos = idFotos;
+        this.tipo = tipo;
     }
 
+    /*
+        public PageAdapterVisorFotos(FragmentManager fm, String[] idFotos) {
+            super(fm);
+            this.idFotos = idFotos;
+        }
+    */
     @Override
     public Fragment getItem(int position) {
-        return FragmentVisorFotos.getInstance(Integer.parseInt(idFotos[position]));
+        return FragmentVisorFotos.getInstance(idFotos[position], tipo, idFotos,position);
     }
 
     @Override

@@ -11,9 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.GridView;
-
-import com.example.gero.feriapp.AdaptadorGridFotosDetalle;
+import android.view.View;
 import com.example.gero.feriapp.CambiarIdioma;
 import com.example.gero.feriapp.MyAdapterManager;
 import com.example.gero.feriapp.PageAdapterVisorFotos;
@@ -29,10 +27,7 @@ import java.util.Locale;
 public class ActividadHRD extends AppCompatActivity {
 
     private Establecimiento hrd;
-    private int idHrd;
     private int[] idFotosHRD;
-    private GridView gridView;
-    private AdaptadorGridFotosDetalle adaptador;
     private Toolbar toolbar;
     private String idioma;
     private String[] titulosTabs;
@@ -54,6 +49,8 @@ public class ActividadHRD extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("ID_HRD", hrd.getId());
+        savedInstanceState.putInt("ID_HRD", hrd.getId());
+
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -93,6 +90,9 @@ public class ActividadHRD extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("test", "OnCreate");
@@ -113,7 +113,7 @@ public class ActividadHRD extends AppCompatActivity {
         if (hrd == null) {
             // Obtener la Candidata con el identificador establecido en la actividad principal
             hrd = (Establecimiento) getIntent().getSerializableExtra("PARAMETROESTABLECIMIENTO");
-            Log.v("test", "establecimiento nombre = "+hrd.getNombre());
+            Log.v("test", "establecimiento nombre = " + hrd.getNombre());
             //candidata = Candidata.getItem(getIntent().getIntExtra("CANDIDATA", 1));
             cargarFotosHRD();
         }
@@ -122,10 +122,11 @@ public class ActividadHRD extends AppCompatActivity {
         toolbar.setBackgroundResource(R.drawable.background_tool);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-/*
+
         // aca se par�metriza el griView que contiene las fotos de la candidata
-        adaptador = new AdaptadorGridFotosDetalle(ActividadHRD.this, idFotosHRD);
-        gridView = (GridView) findViewById(R.id.gridFotosHRD);
+       /*
+        AdaptadorGridFotosDetalle adaptador = new AdaptadorGridFotosDetalle(ActividadHRD.this, idFotosHRD);
+        GridPersonal gridView = (GridPersonal) findViewById(R.id.gridHRD);
         gridView.setAdapter(adaptador);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -133,13 +134,24 @@ public class ActividadHRD extends AppCompatActivity {
                 openDialog(position);
             }
         });
+        gridView.setHorizontalScrollBarEnabled(true);
         gridView.setVerticalScrollBarEnabled(false);
+        */
         //cargarImagenExtendida();
         //las paginas
-*/
-        titulosTabs = getResources().getStringArray(R.array.titulos_tab_descHRD);//ESTO ES TEMPORAL
+
+        titulosTabs = getResources().getStringArray(R.array.titulos_tab_descHRD);
+
         mPagerFotos = (ViewPager) findViewById(R.id.pagerFotosHRD);
-        mPagerFotos.setAdapter(new PageAdapterVisorFotos(getSupportFragmentManager(), idFotosHRD));
+        mPagerFotos.setAdapter(new PageAdapterVisorFotos(getSupportFragmentManager(), idFotosHRD, true));
+        mPagerFotos.setClickable(true);
+        mPagerFotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog(mPagerFotos.getCurrentItem());
+            }
+        });
+
         mPager = (ViewPager) findViewById(R.id.pagerHRD);
         mPager.setAdapter(new MyAdapterManager(10, getSupportFragmentManager(), titulosTabs, idioma, hrd.getId()));
         //mPager.setCurrentItem(miPosicion);
@@ -155,6 +167,7 @@ public class ActividadHRD extends AppCompatActivity {
 
     }
 
+
     /**
      * Despliega el FragmentDialogo en el que se visualizan las fotos de la candidata
      *
@@ -166,7 +179,6 @@ public class ActividadHRD extends AppCompatActivity {
         overlay.setPosicionViewPager(posicion);
         FragmentManager fm = getSupportFragmentManager();
         overlay.show(fm, "FragmentDialog");
-
     }
 
     /**
@@ -234,4 +246,5 @@ public class ActividadHRD extends AppCompatActivity {
         super.onDestroy();
         Log.v("test", "Destroy");
     }
+
 }
